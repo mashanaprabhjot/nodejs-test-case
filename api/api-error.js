@@ -89,7 +89,7 @@ RestError.UnsupportedMediaType = buildConstructor({
     name: 'Unsupported Media Type'
 });
 
-RestError.UnprocessableEntity = deco(function(error) {
+RestError.UnprocessableEntity = deco(function (error) {
     this.message = error.message || 'The request entity could not be processed (422).';
     this.status = 422;
     this.name = error.name || 'Unprocessable Entity';
@@ -98,7 +98,7 @@ RestError.UnprocessableEntity = deco(function(error) {
 });
 
 RestError.UnprocessableEntity.container(RestError).inherit(RestError);
-RestError.UnprocessableEntity.prototype.add = function(key, error) {
+RestError.UnprocessableEntity.prototype.add = function (key, error) {
     this.errors.push(error);
     return this;
 };
@@ -115,7 +115,7 @@ RestError.NotImplemented = buildConstructor({
     name: 'Not Implemented'
 });
 
-RestError.status = function() {
+RestError.status = function () {
     var args = Array.prototype.slice.call(arguments);
     var status = args.shift();
     var errorNames = Object.keys(RestError).filter(function(name) {

@@ -1,14 +1,16 @@
 'use strict';
 
 var mongoose = require( 'mongoose' );
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
+var bcrypt =   require('../node_modules/bcrypt/bCrypt.js');
 var config = require( '../config' );
 var apiError = require('../api/api-error');
 
 
 var userSchema = mongoose.Schema( {
     name: String,
-    password: String
+    password: String,
+    stripe_cust_id : String
 } );
 
 
@@ -31,7 +33,6 @@ userSchema.pre('save', function(next) {
             if (err) {
                 return next(new apiError.Misconfigured('Failed to hash password salt','password_hashing_error',err));
             }
-
             // override the cleartext password with the hashed one
             user.password = hash;
             next();
@@ -41,7 +42,6 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
     var self = this;
-
     if(!this.password) {
         return cb(null,false);
     }
