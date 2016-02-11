@@ -1,0 +1,6 @@
+{
+   
+  "mongoURI": "mongodb://user1:user1@ds061325.mongolab.com:61325/node_app",
+  "secret": "thisisasecret",
+  "stripeApiKey": "sk_test_Eak42MJti1kd3y674MxJR1VP"
+}
