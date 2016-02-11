@@ -102,7 +102,7 @@ exports.register = function( req, res ) {
                     token: token,
                     title: 'Transactions Page'
                     , stripe_cust_id: ""
-                    ,username: user.name
+                    , username: req.body.name
                 } );
             } );
         }

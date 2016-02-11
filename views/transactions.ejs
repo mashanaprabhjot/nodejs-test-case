@@ -2,9 +2,11 @@
 
 
 <form action="/createtransaction" Method="Post" class="form-horizontal col-xs-12 col-sm-12 col-md-8 col-lg-8">
+  Welcome <span id="username"><%=username%></span>
   <p>
     Your token:<span id="token"><%=token%></span>
   </p>
+  
   <h2>Create Stripe Payments</h2>
   <div class="form-group">
     <label for="amount" class="col-sm-2">Amount:</label>

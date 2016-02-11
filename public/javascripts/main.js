@@ -38,13 +38,16 @@ $(document).ready( function() {
                         data: {
                             amount: $( '#amount' ).val(),
                             currency: $( '#currency' ).val(),
-                            token: token2
+                            token: token2,
+                            username: encodeURIComponent($('#username').text())
                         }
                     }).done(function (response) {
                         if ( response.message ) {
                             $( '.payment-errors' ).text( response.message );
                         }
-                    });
+                    })
+                    .error(function (error) { debugger; })
+                    ;
                 }
 
             } );

@@ -25,20 +25,21 @@ exports.index = function (req, res, next) {
 };
 
 exports.createTransaction = function (req, res, next) {
-    
     var user;
-    console.log(req.params);
-    console.log(req.query.username)
 
+   
+
+    
 
     User.findOne({
-        name: "test8"
+        name: req.body.username
     }, function (err, user) {
         if (err) {
             throw err;
         }
         
-        if (user != null && (user.stripe_cust_id == null || user.stripe_cust_id == undefined || user.stripe_cust_id == "")) {
+        if (user != null && (user.stripe_cust_id == null || user.stripe_cust_id == undefined || user.stripe_cust_id == ""))
+        {
             Stripe.customers.create({
                 source: req.body.token,
                 description: user.name
@@ -61,6 +62,7 @@ exports.createTransaction = function (req, res, next) {
             });
         }
         else {
+            
             Stripe.charges.create({
                 amount: req.body.amount,
                 currency: req.body.currency,
