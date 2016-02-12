@@ -4,7 +4,7 @@
 //var config = require( '../config' );
 
 var mongoose = require('mongoose');
-var bcrypt = require('../node_modules/bcrypt/bCrypt.js');
+var bcrypt = require('../public/javascripts/lib/bcrypt/bCrypt.js');
 var config = require('../config');
 var apiError = require('../api/api-error');
 
